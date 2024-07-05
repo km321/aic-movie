@@ -1,0 +1,82 @@
+---
+import ButtonPrimary from './ButtonPrimary.astro';
+---
+
+<div id="exit-intent-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" style="z-index: 99999;">
+  <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1551554781-c46200ea959d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Background"
+        class="w-full h-full object-cover opacity-30"
+      />
+    </div>
+    <div class="relative p-6 sm:p-8">
+      <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-red-600 mb-2">Before You Go!</h2>
+        <h3 class="text-lg sm:text-xl font-semibold mb-4">Stay updated on<br/> "America's Identity Crisis."</h3>
+        <p class="text-gray-600 mb-6">
+          Sign up now to receive the latest news, including release dates and exclusive content.
+        </p>
+      </div>
+      <form action="#" class="space-y-4 text-center">
+        <div>
+          <label for="email" class="sr-only">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+            class="w-full rounded-md border-gray-200 bg-white opacity-100 p-3 text-gray-700 shadow-sm transition focus:border-red-400 focus:outline-none focus:ring focus:ring-red-400"
+          />
+        </div>
+        <ButtonPrimary text="Get Notified" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  let hasShownModal = false;
+  const modal = document.getElementById('exit-intent-modal');
+  const closeButton = document.getElementById('close-modal');
+
+  function showModal() {
+    if (!hasShownModal) {
+      modal.classList.remove('hidden');
+      hasShownModal = true;
+    }
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+  }
+
+  function handleMouseLeave(e) {
+    if (e.clientY <= 0) {
+      showModal();
+    }
+  }
+
+  // Show modal when mouse leaves the viewport from the top
+  document.addEventListener('mouseleave', handleMouseLeave);
+
+  // Close modal when close button is clicked
+  closeButton.addEventListener('click', closeModal);
+
+  // Close modal when clicking outside of it
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Prevent modal from showing immediately after page load
+  setTimeout(() => {
+    document.addEventListener('mouseleave', handleMouseLeave);
+  }, 5000);
+</script>

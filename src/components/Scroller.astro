@@ -1,0 +1,78 @@
+---
+import "aos/dist/aos.css";
+import ButtonPrimary from "./ButtonPrimary.astro";
+---
+
+<section
+    class="relative py-36 bg-gray-900 overflow-hidden"
+    id="parallax-spacer"
+>
+    <div class="absolute inset-0 z-0">
+        <img
+            src="/bg5.png"
+            alt="Background"
+            class="w-full h-full object-cover opacity-50"
+        />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-700 to-gray-800/80  z-10"></div>
+    <div id="particles-js" class="absolute inset-0 z-20"></div>
+    <div class="relative z-30 container mx-auto px-4 text-center">
+        <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wider"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+        >
+            Uncovering America's True Identity
+        </h2>
+        <p
+            class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+        >
+            Join us on a journey through history, culture, and the heart of what
+            makes America unique.
+        </p>
+        <div
+            class="mt-6"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+        >
+            <ButtonPrimary href="#get-notified" text="Get Notified" />
+        </div>
+    </div>
+</section>
+
+<script>
+    // Parallax effect
+    const parallaxSection = document.getElementById("parallax-spacer");
+    const parallaxImage = parallaxSection.querySelector("img");
+
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.pageYOffset;
+        const offset = scrollPosition * 0.5; // Adjust this value to control parallax intensity
+        parallaxImage.style.setProperty("--parallax-offset", `${offset}px`);
+    });
+</script>
+
+<style>
+    #parallax-spacer {
+        perspective: 1px;
+        transform-style: preserve-3d;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>

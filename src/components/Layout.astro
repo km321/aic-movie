@@ -1,0 +1,114 @@
+---
+import Nav from "./Nav.astro";
+import { ViewTransitions } from 'astro:transitions';
+
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            America's Identity Crisis - Uncovering the True Foundations of
+            American Liberty
+        </title>
+        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+        <meta
+            name="description"
+            content="Join Josh Hicks on a transformative journey across America as he uncovers the true principles upon which the nation was founded. Explore diverse locations and meet modern-day patriots preserving America's founding ideals."
+        />
+        <meta
+            name="keywords"
+            content="America's Identity Crisis, documentary, Josh Hicks, American history, Constitution, Bill of Rights, founding ideals, historical truths, modern-day patriots"
+        />
+        <meta name="robots" content="index, follow" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aicmovie.com" />
+        <meta
+            property="og:title"
+            content="America's Identity Crisis - Uncovering the True Foundations of American Liberty"
+        />
+        <meta
+            property="og:description"
+            content="Join Josh Hicks on a transformative journey across America as he uncovers the true principles upon which the nation was founded. Explore diverse locations and meet modern-day patriots preserving America's founding ideals."
+        />
+        <meta
+            property="og:image"
+            content="https://aicmovie.com/social-image.png"
+        />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://aicmovie.com" />
+        <meta
+            property="twitter:title"
+            content="America's Identity Crisis - Uncovering the True Foundations of American Liberty"
+        />
+        <meta
+            property="twitter:description"
+            content="Join Josh Hicks on a transformative journey across America as he uncovers the true principles upon which the nation was founded. Explore diverse locations and meet modern-day patriots preserving America's founding ideals."
+        />
+        <meta
+            property="twitter:image"
+            content="https://aicmovie.com/social-image.png"
+        />
+
+        <link rel="canonical" href="https://aicmovie.com" />
+        <ViewTransitions />
+    </head>
+
+    <body>
+        <Nav />
+        <slot />
+        <footer class="bg-gray-800 text-white py-8">
+            <div
+                class="container mx-auto flex flex-wrap justify-between items-center"
+            >
+                <div
+                    class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0"
+                >
+                    <img
+                        src="/aic-logo.png"
+                        alt="America's Identity Crisis"
+                        class="w-36 mx-auto md:mx-0"
+                    />
+                </div>
+                <div class="w-full md:w-1/3 text-center mb-4 md:mb-0">
+                    <nav
+                        class="flex flex-col md:flex-row justify-center md:justify-between"
+                    >
+                        <a
+                            href="#trailer"
+                            class="px-4 py-2 text-sm hover:underline">Trailer</a
+                        >
+                        <a
+                            href="#synopsis"
+                            class="px-4 py-2 text-sm hover:underline"
+                            >Synopsis</a
+                        >
+                        <a
+                            href="#guests"
+                            class="px-4 py-2 text-sm hover:underline"
+                            >Featured Guests</a
+                        >
+                        <a
+                            href="#locations"
+                            class="px-4 py-2 text-sm hover:underline"
+                            >Locations</a
+                        >
+                    </nav>
+                </div>
+                <div class="w-full md:w-1/3 text-center md:text-right">
+                    <p class="text-sm">
+                        &copy; 2024 America's Identity Crisis. All rights
+                        reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+---
+// BackToTopButton.astro
+---
+
+<button
+  id="backToTopBtn"
+  class="fixed bottom-5 right-5 bg-red-500 text-white p-2 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+  aria-label="Back to top"
+  style="z-index: 999;"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  </svg>
+</button>
+
+<script>
+  const backToTopButton = document.getElementById('backToTopBtn');
+
+  const toggleBackToTopButton = () => {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.remove('opacity-0');
+      backToTopButton.classList.add('opacity-100');
+    } else {
+      backToTopButton.classList.remove('opacity-100');
+      backToTopButton.classList.add('opacity-0');
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  window.addEventListener('scroll', toggleBackToTopButton);
+  backToTopButton.addEventListener('click', scrollToTop);
+</script>

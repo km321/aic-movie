@@ -1,0 +1,42 @@
+---
+import ButtonPrimary from './ButtonPrimary.astro';
+import 'aos/dist/aos.css';
+---
+
+<section class="relative bg-gray-50" id="get-notified">
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1551554781-c46200ea959d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Background"
+      class="w-full h-full object-cover opacity-30"
+    />
+  </div>
+  <div class="p-8 md:p-12 lg:px-16 lg:py-24 relative z-50">
+    <div class="mx-auto max-w-xl text-center" data-aos="fade-up" data-aos-duration="1000">
+      <h2 class="text-3xl font-bold text-red-600 mb-2">Get Notified</h2>
+      <h3 class="text-xl font-semibold mb-4">Stay updated on the release of "America's Identity Crisis."</h3>
+
+      <p class="hidden text-gray-500 sm:mt-4 sm:block">
+        Sign up to receive the latest news and updates about the documentary. Be the first to know about release dates, special screenings, and exclusive content.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-8 max-w-xl" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+      <form action="#" class="sm:flex sm:gap-4">
+        <div class="sm:flex-1">
+          <label for="email" class="sr-only">Email</label>
+
+          <input
+            type="email"
+            placeholder="Email address"
+            class="w-full rounded-md border-gray-200 bg-white opacity-100 p-3 text-gray-700 shadow-lg transition focus:border-white focus:outline-none focus:ring focus:ring-red-400"
+          />
+        </div>
+        <div class="text-center sm:text-left mt-4 sm:mt-0">
+          <ButtonPrimary text="Get Notified" />
+
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

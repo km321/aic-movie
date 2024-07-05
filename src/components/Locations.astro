@@ -1,0 +1,110 @@
+---
+import 'aos/dist/aos.css';
+---
+
+<section class="bg-gray-900 py-16 relative" id="locations">
+  <div class="absolute inset-0">
+    <img
+      src="/bgstyle4-min.png"
+      alt="Background"
+      class="w-full h-full object-cover opacity-30"
+    />
+  </div>
+  <div
+    class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 relative"
+  >
+    <div class="lg:w-1/2 mb-8 lg:mb-0" data-aos="fade-right" data-aos-duration="1000">
+      <h2 class="text-4xl font-bold text-red-600 mb-4">Locations</h2>
+      <h3 class="text-2xl font-semibold text-white mb-4">
+        Explore the Diverse Settings of Josh's Journey
+      </h3>
+      <p class="text-justify text-gray-100">
+        From the bustling city streets to quiet rural corners, "America's
+        Identity Crisis" takes you on a cross-country quest. Experience the
+        vibrant cultural scenes, historical landmarks, and grassroots efforts
+        that shape America's identity. Each pin on the map represents a unique
+        stop on Josh's transformative journey, uncovering truths and meeting
+        modern-day patriots dedicated to preserving America's founding ideals.
+      </p>
+    </div>
+    <div class="w-full lg:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+      <div id="map" class="rounded-2xl shadow-lg"></div>
+    </div>
+  </div>
+</section>
+
+<script is:inline src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script is:inline>
+
+  // Map initialization
+  const map = L.map("map").setView([37.8, -96], 4); // Set initial view to the center of the US
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  const locations = [
+    { name: "Houston, TX", coords: [29.7604, -95.3698] },
+    { name: "Dallas, TX", coords: [32.7767, -96.797] },
+    { name: "Nashville, TN", coords: [36.1627, -86.7816] },
+    { name: "Colorado Springs, CO", coords: [38.8339, -104.8214] },
+    { name: "Virginia Beach, VA", coords: [36.8529, -75.978] },
+    { name: "Charlotte, NC", coords: [35.2271, -80.8431] },
+    { name: "Washington, D.C.", coords: [38.9072, -77.0369] },
+    { name: "Ft. Myers, FL", coords: [26.6406, -81.8723] },
+    { name: "New York City, NY", coords: [40.7128, -74.006] },
+    { name: "Detroit, MI", coords: [42.3314, -83.0458] },
+    { name: "Eagle Pass, TX", coords: [28.7091, -100.4995] },
+  ];
+
+  locations.forEach((loc) => {
+    L.marker(loc.coords).addTo(map).bindPopup(loc.name);
+  });
+
+  // Adding beams
+  const addBeam = (from, to) => {
+    const polyline = L.polyline([from, to], {
+      color: "red",
+      weight: 2,
+      opacity: 1,
+      className: "beam",
+    }).addTo(map);
+
+    // Animate the beam
+    const path = document.querySelectorAll(".beam");
+    path.forEach((p) => {
+      const length = p.getTotalLength();
+      p.style.transition = p.style.WebkitTransition = "none";
+      p.style.strokeDasharray = length + " " + length;
+      p.style.strokeDashoffset = length;
+      p.getBoundingClientRect();
+      p.style.transition = p.style.WebkitTransition =
+        "stroke-dashoffset 2s linear";
+      p.style.strokeDashoffset = "0";
+    });
+  };
+
+  // Add beams between locations
+  for (let i = 0; i < locations.length - 1; i++) {
+    addBeam(locations[i].coords, locations[i + 1].coords);
+  }
+</script>
+
+<style>
+  #map {
+    height: 500px;
+    width: 100%;
+  }
+  .beam {
+    stroke: red;
+    stroke-width: 2;
+    stroke-dasharray: 5;
+    animation: dash 1s linear infinite;
+  }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 1000;
+    }
+  }
+</style>
