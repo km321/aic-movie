@@ -1,7 +1,7 @@
 ---
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 import { Image } from "astro:assets";
-import BgStyle4 from '../img/bgstyle4-min.png';
+import BgStyle4 from "../img/bgstyle4-min.png";
 ---
 
 <section class="bg-gray-900 py-16 relative" id="locations">
@@ -15,7 +15,11 @@ import BgStyle4 from '../img/bgstyle4-min.png';
   <div
     class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 relative"
   >
-    <div class="lg:w-1/2 mb-8 lg:mb-0" data-aos="fade-right" data-aos-duration="1000">
+    <div
+      class="lg:w-1/2 mb-8 lg:mb-0"
+      data-aos="fade-right"
+      data-aos-duration="1000"
+    >
       <h2 class="text-4xl font-bold text-red-600 mb-4">Locations</h2>
       <h3 class="text-2xl font-semibold text-white mb-4">
         Explore the Diverse Settings of Josh's Journey
@@ -29,7 +33,12 @@ import BgStyle4 from '../img/bgstyle4-min.png';
         modern-day patriots dedicated to preserving America's founding ideals.
       </p>
     </div>
-    <div class="w-full lg:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+    <div
+      class="w-full lg:w-1/2 flex justify-center"
+      data-aos="fade-left"
+      data-aos-duration="1000"
+      data-aos-delay="300"
+    >
       <div id="map" class="rounded-2xl shadow-lg"></div>
     </div>
   </div>
@@ -37,7 +46,6 @@ import BgStyle4 from '../img/bgstyle4-min.png';
 
 <script is:inline src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script is:inline>
-
   // Map initialization
   const map = L.map("map").setView([37.8, -96], 4); // Set initial view to the center of the US
 
@@ -58,6 +66,9 @@ import BgStyle4 from '../img/bgstyle4-min.png';
     { name: "New York City, NY", coords: [40.7128, -74.006] },
     { name: "Detroit, MI", coords: [42.3314, -83.0458] },
     { name: "Eagle Pass, TX", coords: [28.7091, -100.4995] },
+    { name: "Modesto, CA", coords: [37.6393, -120.997] },
+    { name: "Gettysburg, PA", coords: [39.8309, -77.2311] },
+    { name: "Valley Forge, PA", coords: [40.1001, -75.4621] },
   ];
 
   locations.forEach((loc) => {
