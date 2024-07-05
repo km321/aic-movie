@@ -1,6 +1,8 @@
 ---
 import "aos/dist/aos.css";
 import ButtonPrimary from "./ButtonPrimary.astro";
+import { Image } from "astro:assets";
+import bg5 from "../img/bg5.png";
 ---
 
 <section
@@ -8,8 +10,8 @@ import ButtonPrimary from "./ButtonPrimary.astro";
     id="parallax-spacer"
 >
     <div class="absolute inset-0 z-0">
-        <img
-            src="/bg5.png"
+        <Image
+            src={bg5}
             alt="Background"
             class="w-full h-full object-cover opacity-50"
         />

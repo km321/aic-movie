@@ -1,6 +1,8 @@
 ---
 import ButtonSecondary from "./ButtonSecondary.astro";
 import 'aos/dist/aos.css';
+import { Image } from "astro:assets";
+import MarbleBg from '../img/marblebg.jpg';
 
 // ModernGuestCards.astro
 const guests = [
@@ -44,8 +46,8 @@ const guests = [
 
 <section class="relative py-16 bg-gray-100" id="guests">
   <div class="absolute inset-0">
-    <img
-      src="https://images.unsplash.com/photo-1551554781-c46200ea959d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    <Image
+      src={MarbleBg}
       alt="Background"
       class="w-full h-full object-cover opacity-30"
     />
@@ -55,7 +57,7 @@ const guests = [
     <h3 class="text-xl font-medium text-gray-600 mb-12 text-center max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
       Meet the experts and patriots who bring America's history to life.
     </h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+    <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
       {guests.map((guest, index) => (
           <div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay={300 + index * 100}>
             <img src={guest.image} alt={guest.name} class="w-full h-72 object-cover object-center transition-all duration-300 group-hover:scale-105" />
@@ -71,7 +73,7 @@ const guests = [
             </div>
           </div>
       ))}
-      <div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-red-500 to-red-800 h-72 w-72 flex items-center justify-center" data-aos="fade-up" data-aos-delay={300 + guests.length * 100}>
+      <div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-red-500 to-red-800 h-72 w-auto sm:w-72 flex items-center justify-center" data-aos="fade-up" data-aos-delay={300 + guests.length * 100}>
         <div class="text-center text-white p-4">
           <h3 class="text-3xl font-bold mb-2">And Many More</h3>
           <p class="text-lg mb-2">Discover all our amazing guests</p>

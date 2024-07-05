@@ -1,11 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import Cover from '../img/poster.jpg';
 ---
 
 <div class="bg-gradient-to-b from-gray-900 to-gray-700">
-  <section class="pt-72 pb-24 max-w-6xl mx-auto">
+  <section class="sm:pt-72 pt-48 pb-0 sm:pb-24 max-w-6xl mx-auto">
     <div id="synopsis" class="container mx-auto px-4 flex flex-col flex-col-reverse md:flex-row items-center">
       <div class="w-full md:w-1/3 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
-        <img src="poster.jpg" alt="America's Identity Crisis Movie Cover" class="rounded-2xl shadow-2xl">
+        <Image src={Cover} alt="America's Identity Crisis Movie Cover" class="rounded-2xl shadow-2xl">
       </div>
       <div class="w-full md:w-2/3 mb-12 md:mb-0 md:pl-12 text-justify">
         <h2 class="text-3xl font-bold text-red-600 mb-2" data-aos="fade-up" data-aos-duration="800">America's Identity Crisis</h2>

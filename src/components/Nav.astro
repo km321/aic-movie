@@ -1,10 +1,12 @@
 ---
 import ButtonPrimary from "./ButtonPrimary.astro";
+import Logo from '../img/aic-logo.png';
+import { Image } from "astro:assets";
 ---
 
 <nav class="absolute top-0 left-0 right-0 p-4 z-50">
     <div class="container mx-auto flex justify-between items-center">
-        <img src="/aic-logo.png" alt="America's Identity Crisis" class="w-36" />
+        <Image src={Logo} alt="America's Identity Crisis" class="w-36" />
         
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center space-x-8 font-bold">

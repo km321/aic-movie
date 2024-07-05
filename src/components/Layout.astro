@@ -1,7 +1,8 @@
 ---
 import Nav from "./Nav.astro";
 import { ViewTransitions } from 'astro:transitions';
-
+import { Image } from "astro:assets";
+import Logo from '../img/aic-logo.png';
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -71,8 +72,8 @@ import { ViewTransitions } from 'astro:transitions';
                 <div
                     class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0"
                 >
-                    <img
-                        src="/aic-logo.png"
+                    <Image
+                        src={Logo}
                         alt="America's Identity Crisis"
                         class="w-36 mx-auto md:mx-0"
                     />

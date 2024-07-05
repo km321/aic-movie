@@ -1,12 +1,14 @@
 ---
 import ButtonPrimary from './ButtonPrimary.astro';
 import 'aos/dist/aos.css';
+import { Image } from "astro:assets";
+import MarbleBg from '../img/marblebg.jpg';
 ---
 
 <section class="relative bg-gray-50" id="get-notified">
   <div class="absolute inset-0">
-    <img
-      src="https://images.unsplash.com/photo-1551554781-c46200ea959d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    <Image
+      src={MarbleBg}
       alt="Background"
       class="w-full h-full object-cover opacity-30"
     />
