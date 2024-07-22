@@ -1,66 +1,84 @@
 ---
-import ButtonSecondary from "./ButtonSecondary.astro";
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 import { Image } from "astro:assets";
-import MarbleBg from '../img/marblebg.jpg';
-import Lance from '../img/LanceWallnau.jpg';
-import Michelle from '../img/Michelle-B.jpg';
-import Alex from '../img/Alex-Newman.jpg';
-import Greg from '../img/GregHood.jpeg';
-import Kimberly from '../img/KimberlyFletcher.webp';
-import Bill from '../img/bill-federer.jpg';
-import Carol from '../img/carol-swain.jpg';
-import Rickie from '../img/rickie-bradshaw.jpg';
-import John from '../img/John-Diamond.jpg';
+import MarbleBg from "../img/marblebg.jpg";
+import Lance from "../img/LanceWallnau.jpg";
+import Michelle from "../img/Michelle-B.jpg";
+import Alex from "../img/Alex-Newman.jpg";
+import Greg from "../img/GregHood.jpeg";
+import Kimberly from "../img/KimberlyFletcher.webp";
+import Bill from "../img/bill-federer.jpg";
+import Carol from "../img/carol-swain.jpg";
+import Rickie from "../img/rickie-bradshaw.jpg";
+import John from "../img/John-Diamond.jpg";
+import Catherine from "../img/Catherine-Engelbrecht.jpeg";
+import Josh from "../img/josh-hicks.jpeg";
+import Erin from "../img/erin-lee.jpg";
 
-
-// ModernGuestCards.astro
 const guests = [
   {
     name: "Dr. Lance Wallnau",
-    title: "Speaker and Author",
-    image: Lance
+    title: "Author, Speaker, Television Host, Thought Leader",
+    image: Lance,
   },
   {
     name: "Dr. Carol Swain",
-    title: "Political Scientist and Legal Professional",
-    image: Carol
+    title:
+      "Professor Emeritus of Political Science and Law at Vanderbilt University, Author, and Speaker",
+    image: Carol,
   },
   {
     name: "Dr. Michelle Bachmann",
-    title: "Politician and Author",
-    image: Michelle
-  },
-  {
-    name: "Rickie Bradshaw",
-    title: "Pastor",
-    image: Rickie
+    title:
+      "Dean, Robertson School of Government, Regent University; Former U.S. Congresswoman",
+    image: Michelle,
   },
   {
     name: "Alex Newman",
-    title: "Journalist and Author",
-    image: Alex
+    title:
+      "Award-winning Journalist, Speaker, President of Liberty Sentinel Media, Inc.",
+    image: Alex,
   },
   {
-    name: "Dr .Greg Hood",
-    title: "Speaker and Author",
-    image: Greg
+    name: "Dr. Greg Hood",
+    title: "Author, Pastor, Teacher",
+    image: Greg,
   },
   {
     name: "Dr. John Diamond",
-    title: "Speaker and Author",
-    image: John
+    title: "American Republic Policy, Author, Television Host",
+    image: John,
   },
   {
     name: "Kimberly Fletcher",
-    title: "Moms For America",
-    image: Kimberly
+    title: "Founder and President of Moms For America",
+    image: Kimberly,
   },
   {
     name: "Bill Federer",
-    title: "Historian and Author",
-    image: Bill
-  }
+    title: "Historian, Author, Speaker, Founder of American Minute",
+    image: Bill,
+  },
+  {
+    name: "Catherine Engelbrecht",
+    title: "Founder of True the Vote",
+    image: Catherine,
+  },
+  {
+    name: "Erin Lee",
+    title: "Founder of Protect Kids Colorado and StopGenderIdeology.com",
+    image: Erin,
+  },
+  {
+    name: "Rickie Bradshaw",
+    title: "Pastor, Speaker, Prayer Leader",
+    image: Rickie,
+  },
+  {
+    name: "Josh Hicks",
+    title: "Filmmaker and Storyteller of America's Identity Crisis",
+    image: Josh,
+  },
 ];
 ---
 
@@ -73,21 +91,41 @@ const guests = [
     />
   </div>
   <div class="max-w-7xl mx-auto px-4 relative">
-    <h2 class="text-4xl font-bold text-gray-800 mb-4 text-center" data-aos="fade-up">Featured Guests</h2>
-    <h3 class="text-xl font-medium text-gray-600 mb-12 text-center max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+    <h2
+      class="text-4xl font-bold text-gray-800 mb-4 text-center"
+      data-aos="fade-up"
+    >
+      Featured Guests
+    </h2>
+    <h3
+      class="text-xl font-medium text-gray-600 mb-12 text-center max-w-2xl mx-auto"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
       Meet the experts and patriots who bring America's history to life.
     </h3>
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-      {guests.map((guest, index) => (
-          <div class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay={300 + index * 100}>
-            <Image src={guest.image} alt={guest.name} class="w-96 h-96 object-cover object-top transition-all duration-300 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-              <h3 class="text-xl font-bold mb-1">{guest.name}</h3>
-              <p class="text-sm mb-2 hidden">{guest.title}</p>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+    >
+      {
+        guests.map((guest, index) => (
+          <div
+            class="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl"
+            data-aos="fade-up"
+            data-aos-delay={300 + index * 100}
+          >
+            <Image
+              src={guest.image}
+              alt={guest.name}
+              class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-white bg-gray-800 bg-opacity-70">
+              <h3 class="text-lg font-semibold">{guest.name}</h3>
+              <p class="text-sm">{guest.title}</p>
             </div>
           </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
