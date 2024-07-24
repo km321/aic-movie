@@ -2,18 +2,24 @@
 import "aos/dist/aos.css";
 import { Image } from "astro:assets";
 import MarbleBg from "../img/marblebg.jpg";
-import Lance from "../img/LanceWallnau.jpg";
-import Michelle from "../img/Michelle-B.jpg";
+import Lance from "../img/lance.jpg";
+import Michelle from "../img/michelle.jpg";
 import Alex from "../img/Alex-Newman.jpg";
 import Greg from "../img/GregHood.jpeg";
 import Kimberly from "../img/KimberlyFletcher.webp";
 import Bill from "../img/bill-federer.jpg";
 import Carol from "../img/carol-swain.jpg";
-import Rickie from "../img/rickie-bradshaw.jpg";
+import Rickie from "../img/rickie.jpg";
 import John from "../img/John-Diamond.jpg";
 import Catherine from "../img/Catherine-Engelbrecht.jpeg";
 import Josh from "../img/josh-hicks.jpeg";
 import Erin from "../img/erin-lee.jpeg";
+import Donica from "../img/donica.jpeg";
+import Ford from "../img/ford.jpg";
+import Agree from "../img/agree.jpg";
+import Enns from "../img/enns.jpeg";
+import Fitch from "../img/fitch.jpeg";
+import Rocky from "../img/rocky.jpeg";
 
 const guests = [
   {
@@ -75,6 +81,36 @@ const guests = [
     image: Rickie,
   },
   {
+    name: "Justin Ford",
+    title: "Realtor and Youth Mentor",
+    image: Ford,
+  },
+  {
+    name: "Robert & Jaime Agree",
+    title: "Family Advocators, Founders of Banners4Freedom",
+    image: Agree,
+  },
+  {
+    name: "Donica Hudson",
+    title: "Ordained Pastor, Author, Speaker and Media Personality",
+    image: Donica,
+  },
+  {
+    name: "Dr. Elizabeth Enns",
+    title: "Dr. Elizabeth Enns, Educator, Candidate for S.C. House District 26",
+    image: Enns,
+  },
+  {
+    name: "Rocky Malloy",
+    title: "National School Chaplain association",
+    image: Rocky,
+  },
+  {
+    name: "J. R. Fitch",
+    title: "Financial Advisor and Founder of More Lord Kingdom",
+    image: Fitch,
+  },
+  {
     name: "Josh Hicks",
     title: "Filmmaker and Storyteller of America's Identity Crisis",
     image: Josh,
@@ -90,9 +126,9 @@ const guests = [
       class="w-full h-full object-cover opacity-30"
     />
   </div>
-  <div class="max-w-7xl mx-auto px-4 relative">
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
     <h2
-      class="text-4xl font-bold text-gray-800 mb-4 text-center"
+      class="text-4xl font-bold text-gray-800 mb-8 text-center"
       data-aos="fade-up"
     >
       Featured Guests
@@ -117,11 +153,11 @@ const guests = [
             <Image
               src={guest.image}
               alt={guest.name}
-              class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+              class="w-full h-96 object-cover object-top filter transition-transform duration-300 group-hover:scale-105 group-hover:brightness-90"
             />
-            <div class="absolute bottom-0 left-0 right-0 p-4 text-white bg-gray-800 bg-opacity-70">
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-white bg-gray-900 bg-opacity-80">
               <h3 class="text-lg font-semibold">{guest.name}</h3>
-              <p class="text-sm">{guest.title}</p>
+              <p class="text-sm max-h-12">{guest.title}</p>
             </div>
           </div>
         ))
