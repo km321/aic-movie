@@ -24,7 +24,7 @@ import MarbleBg from '../img/marblebg.jpg';
     </div>
 
     <div class="mx-auto mt-8 max-w-xl" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-      <form action="https://script.google.com/macros/s/AKfycbzM_muyMQg3y0604EB008fwzxYYOHA4ecahqS9dwuqcQc9YbeFs-6H7j9Urbs-Og5x6/exec" method="post" class="sm:flex sm:gap-4">
+      <form id="notification-form" class="sm:flex sm:gap-4">
         <div class="sm:flex-1">
           <label for="email" class="sr-only">Email</label>
 
@@ -33,13 +33,57 @@ import MarbleBg from '../img/marblebg.jpg';
             name="email"
             placeholder="Email address"
             class="w-full rounded-md border-gray-200 bg-white opacity-100 p-3 text-gray-700 shadow-lg transition focus:border-white focus:outline-none focus:ring focus:ring-red-400"
+            required
           />
         </div>
         <div class="text-center sm:text-left mt-4 sm:mt-0">
-          <ButtonPrimary text="Get Notified" />
+   
 
+          <button
+    class="relative shadow-lg inline-flex items-center justify-start inline-block px-8 py-3 overflow-hidden font-bold transition-all bg-red-600 rounded-full hover:bg-white group"
+>
+    <span
+        class="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"
+    ></span>
+    <span
+        class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-red-600"
+        >Get Notified</span
+    ></button
+>
         </div>
       </form>
+      <div id="thank-you-message" class="hidden text-center text-green-500 mt-4">Thank you for subscribing!</div>
+      <div id="loading-message" class="hidden text-center text-gray-500 mt-4">Submitting...</div>
     </div>
   </div>
 </section>
+
+<script>
+  document.getElementById('notification-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+    const loadingMessage = document.getElementById('loading-message');
+    const thankYouMessage = document.getElementById('thank-you-message');
+    
+    loadingMessage.classList.remove('hidden');
+    
+    fetch('https://script.google.com/macros/s/AKfycbzM_muyMQg3y0604EB008fwzxYYOHA4ecahqS9dwuqcQc9YbeFs-6H7j9Urbs-Og5x6/exec', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    })
+    .then(response => {
+      // As the response is opaque, we assume success
+      form.reset();
+      loadingMessage.classList.add('hidden');
+      thankYouMessage.classList.remove('hidden');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      loadingMessage.classList.add('hidden');
+      alert('There was an issue with your submission. Please try again.');
+    });
+  });
+</script>

@@ -24,18 +24,31 @@ import ButtonPrimary from './ButtonPrimary.astro';
           Sign up now to receive the latest news, including release dates and exclusive content.
         </p>
       </div>
-      <form action="#" class="space-y-4 text-center">
+      <form id="exit-intent-form" class="space-y-4 text-center">
         <div>
-          <label for="email" class="sr-only">Email</label>
+          <label for="email-exit" class="sr-only">Email</label>
           <input
             type="email"
-            id="email"
+            id="email-exit"
+            name="email"
             placeholder="Enter your email address"
             class="w-full rounded-md border-gray-200 bg-white opacity-100 p-3 text-gray-700 shadow-sm transition focus:border-red-400 focus:outline-none focus:ring focus:ring-red-400"
+            required
           />
         </div>
-        <ButtonPrimary text="Get Notified" />
+        <button
+          class="relative shadow-lg inline-flex items-center justify-start inline-block px-8 py-3 overflow-hidden font-bold transition-all bg-red-600 rounded-full hover:bg-white group"
+        >
+          <span
+            class="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"
+          ></span>
+          <span
+            class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-red-600"
+          >Get Notified</span>
+        </button>
       </form>
+      <div id="thank-you-message-exit" class="hidden text-center text-green-500 mt-4">Thank you for subscribing!</div>
+      <div id="loading-message-exit" class="hidden text-center text-gray-500 mt-4">Submitting...</div>
     </div>
   </div>
 </div>
@@ -54,10 +67,11 @@ import ButtonPrimary from './ButtonPrimary.astro';
 
   function closeModal() {
     modal.classList.add('hidden');
+    hasShownModal = true; // Prevent the modal from showing again
   }
 
   function handleMouseLeave(e) {
-    if (e.clientY <= 0) {
+    if (e.clientY <= 0 && !hasShownModal) {
       showModal();
     }
   }
@@ -79,4 +93,33 @@ import ButtonPrimary from './ButtonPrimary.astro';
   setTimeout(() => {
     document.addEventListener('mouseleave', handleMouseLeave);
   }, 5000);
+
+  document.getElementById('exit-intent-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+    const loadingMessage = document.getElementById('loading-message-exit');
+    const thankYouMessage = document.getElementById('thank-you-message-exit');
+    
+    loadingMessage.classList.remove('hidden');
+    
+    fetch('https://script.google.com/macros/s/AKfycbzM_muyMQg3y0604EB008fwzxYYOHA4ecahqS9dwuqcQc9YbeFs-6H7j9Urbs-Og5x6/exec', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    })
+    .then(response => {
+      // As the response is opaque, we assume success
+      form.reset();
+      loadingMessage.classList.add('hidden');
+      thankYouMessage.classList.remove('hidden');
+      setTimeout(closeModal, 2000); // Close the modal after showing the thank you message
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      loadingMessage.classList.add('hidden');
+      alert('There was an issue with your submission. Please try again.');
+    });
+  });
 </script>
