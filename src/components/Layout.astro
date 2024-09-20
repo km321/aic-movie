@@ -1,8 +1,7 @@
 ---
 import Nav from "./Nav.astro";
-import { ViewTransitions } from 'astro:transitions';
 import { Image } from "astro:assets";
-import Logo from '../img/aic-logo.png';
+import Logo from "../img/aic-logo.png";
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -13,8 +12,11 @@ import Logo from '../img/aic-logo.png';
             America's Identity Crisis - Uncovering the True Foundations of
             American Liberty
         </title>
-        
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet/dist/leaflet.css"
+        />
 
         <meta
             name="description"
@@ -37,10 +39,7 @@ import Logo from '../img/aic-logo.png';
             property="og:description"
             content="Join Josh Hicks on a transformative journey across America as he uncovers the true principles upon which the nation was founded. Explore diverse locations and meet modern-day patriots preserving America's founding ideals."
         />
-        <meta
-            property="og:image"
-            content="/social-image.png"
-        />
+        <meta property="og:image" content="/social-image.png" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
@@ -53,13 +52,14 @@ import Logo from '../img/aic-logo.png';
             property="twitter:description"
             content="Join Josh Hicks on a transformative journey across America as he uncovers the true principles upon which the nation was founded. Explore diverse locations and meet modern-day patriots preserving America's founding ideals."
         />
-        <meta
-            property="twitter:image"
-            content="/social-image.png"
-        />
+        <meta property="twitter:image" content="/social-image.png" />
 
         <link rel="canonical" href="https://aicmovie.com" />
-        <ViewTransitions />
+        <script
+            src="https://beamanalytics.b-cdn.net/beam.min.js"
+            data-token="b642248a-15ba-4cb3-94e8-a0e33c205fb8"
+            async
+        ></script>
     </head>
 
     <body>
