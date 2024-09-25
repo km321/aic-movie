@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from "astro";
+import Hero from "../../components/Hero.astro";
+import Layout from "../../components/Layout.astro";
+import Synopsis from "../../components/Synopsis.astro";
+import Guests from "../../components/Guests.astro";
+import Locations from "../../components/Locations.astro";
+import GetNotified from "../../components/GetNotified.astro";
+import Scroller from "../../components/Scroller.astro";
+import BackToTop from "../../components/BackToTop.astro";
+
+export const getStaticPaths = (() => {
+  
+  return [
+    { params: 
+      { slug: "LANCE" }
+    },
+    { params: 
+      { slug: "MOMS" }
+    },
+  ];
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+---
+
+<Layout>
+  <Hero />
+  <Synopsis />
+  <Scroller />
+  <Guests />
+  <Locations />
+  <GetNotified />
+  <BackToTop />
+</Layout>

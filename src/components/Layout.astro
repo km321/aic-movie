@@ -111,30 +111,47 @@ import Logo from "../img/aic-logo.png";
         <script is:inline>
             // Wait for the DOM to load
             document.addEventListener("DOMContentLoaded", function () {
-                const params = new URLSearchParams(window.location.search);
-                const affParam = params.get("aff") || "";
+                // Function to get the last segment of the pathname (slug)
+                function getSlug() {
+                    const path = window.location.pathname;
+                    const segments = path.split('/').filter(Boolean); // Remove empty segments
+                    return segments.length > 0 ? segments[segments.length - 1] : "";
+                }
         
+                // Function to get the 'aff' query parameter if it exists
+                function getAffQueryParam() {
+                    const params = new URLSearchParams(window.location.search);
+                    return params.get("aff") || "";
+                }
+        
+                // Get the query param or slug (prioritize query param)
+                const affParam = getAffQueryParam() || getSlug();
+        
+                // Get elements by their IDs
                 const watchBtn = document.getElementById("watch");
                 const midWatchBtn = document.getElementById("mid-watch");
                 const navWatchBtn = document.getElementById("nav-watch");
                 const mobileNavWatchBtn = document.getElementById("mobile-nav-watch");
-
+        
+                // Update href attributes if the affParam exists
                 if (affParam && watchBtn) {
                     watchBtn.href += `?aff=${affParam}`;  
                 }
-
+        
                 if (affParam && midWatchBtn) {
                     midWatchBtn.href += `?aff=${affParam}`;
                 }
-
+        
                 if (affParam && navWatchBtn) {
                     navWatchBtn.href += `?aff=${affParam}`;
                 }
-
+        
                 if (affParam && mobileNavWatchBtn) {
                     mobileNavWatchBtn.href += `?aff=${affParam}`;
                 }
             });
         </script>
+        
+        
     </body>
 </html>
