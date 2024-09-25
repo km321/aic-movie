@@ -108,5 +108,33 @@ import Logo from "../img/aic-logo.png";
                 </div>
             </div>
         </footer>
+        <script is:inline>
+            // Wait for the DOM to load
+            document.addEventListener("DOMContentLoaded", function () {
+                const params = new URLSearchParams(window.location.search);
+                const affParam = params.get("aff") || "";
+        
+                const watchBtn = document.getElementById("watch");
+                const midWatchBtn = document.getElementById("mid-watch");
+                const navWatchBtn = document.getElementById("nav-watch");
+                const mobileNavWatchBtn = document.getElementById("mobile-nav-watch");
+
+                if (affParam && watchBtn) {
+                    watchBtn.href += `?aff=${affParam}`;  
+                }
+
+                if (affParam && midWatchBtn) {
+                    midWatchBtn.href += `?aff=${affParam}`;
+                }
+
+                if (affParam && navWatchBtn) {
+                    navWatchBtn.href += `?aff=${affParam}`;
+                }
+
+                if (affParam && mobileNavWatchBtn) {
+                    mobileNavWatchBtn.href += `?aff=${affParam}`;
+                }
+            });
+        </script>
     </body>
 </html>
